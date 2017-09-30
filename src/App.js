@@ -13,10 +13,17 @@ class Todo extends Component {
 }
 
 class Menu extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      newTaskCB: this.props.newTaskCB
+    }
+  }
+
   render () {
     return (
       <div>
-        <button>New task</button>
+        <button onClick={this.state.newTaskCB}>New task</button>
         <button>Delete selected</button>
       </div>
     )
@@ -24,11 +31,25 @@ class Menu extends Component {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      todos: []
+    }
+  }
+
+  addTask = () => {
+    this.state.todos.push(<Todo key={Date.now()}/>)
+    this.setState(this.state)
+  }
+
   render() {
     return (
       <div>
-        <Todo/>
-        <Menu/>
+        <div>
+          { this.state.todos }
+        </div>
+        <Menu newTaskCB={this.addTask} />
       </div>
     );
   }
