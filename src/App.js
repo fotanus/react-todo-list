@@ -1,31 +1,7 @@
 import React, { Component } from 'react';
+import Menu from './Menu'
+import Todo from './Todo'
 
-class Todo extends Component {
-  handleCheckBox = () => {
-    this.props.onCheckBoxClick(this.props.id)
-  }
-
-  render () {
-    return (
-      <div>
-        <input type="checkbox" onChange={this.handleCheckBox}/>
-        <input type="text" />
-        <textarea />
-      </div>
-    )
-  }
-}
-
-class Menu extends Component {
-  render () {
-    return (
-      <div>
-        <button onClick={this.props.newTaskCB}>New task</button>
-        <button onClick={this.props.deleteTasksCB}>Delete selected</button>
-      </div>
-    )
-  }
-}
 
 class App extends Component {
   constructor(props) {
